@@ -9,8 +9,8 @@ writeButton.addEventListener("click", async () => {
   console.log("write button clicked");
   writeLog.textContent = await "please touch the NFC tag!";
   try {
-    let writeText = inputText.value
-    console.log(writeText)
+    let writeText = inputText.value;
+    console.log(writeText);
     if (!writeText) {
       writeLog.textContent = "empty";
       return;
@@ -32,12 +32,12 @@ readButton.addEventListener("click", async () => {
     readLog.textContent = "scan started";
 
     reader.addEventListener("error", () => {
-      console.log("Error");
+      readLog.textContent += "Error";
     });
 
     reader.addEventListener("reading", ({ message, serialNumber }) => {
-      console.log(`> Serial Number: ${serialNumber}`);
-      console.log(message);
+      readLog.textContent += `> Serial Number: ${serialNumber}`;
+      readLog.textContent += message;
       const record = message.records[0];
       const { data, encoding, recordType } = record;
       if (recordType === "text") {
