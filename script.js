@@ -39,7 +39,6 @@ readButton.addEventListener("click", async () => {
       readLog.textContent += `> Serial Number: ${serialNumber}`;
       readLog.textContent += message;
       for (const record of message.records) {
-        console.log(elem);
         const { data, encoding, recordType } = record;
         readLog.textContent += " TYPE:" + recordType;
         readLog.textContent += " ENC:" + encoding;
