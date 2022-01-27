@@ -37,11 +37,12 @@ readButton.addEventListener("click", async () => {
 
     reader.addEventListener("reading", ({ message, serialNumber }) => {
       readLog.textContent += `> Serial Number: ${serialNumber}`;
-      readLog.textContent += message;
+      readLog.textContent += `> Length: ${message.records.length}`;
       for (const record of message.records) {
-        const { data, encoding, recordType } = record;
+        const { data, encoding, recordType, mediaType } = record;
         readLog.textContent += " TYPE:" + recordType;
         readLog.textContent += " ENC:" + encoding;
+        readLog.textContent += " MTYPE:" + mediaType;
         if (recordType === "text") {
           const textDecoder = new TextDecoder(encoding);
           const text = textDecoder.decode(data);
