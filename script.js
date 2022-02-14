@@ -39,8 +39,11 @@ readButton.addEventListener("click", async () => {
       readLog.textContent += `> Serial Number: ${serialNumber}`;
       readLog.textContent += `> Length: ${message.records.length}`;
       for (const record of message.records) {
+        for (let prop in record) {
+          readLog.textContent += " " + prop;
+        }
+
         const { data, encoding, recordType, mediaType } = record;
-        readLog.textContent += " TYPE:" + recordType;
         readLog.textContent += " ENC:" + encoding;
         readLog.textContent += " MTYPE:" + mediaType;
         if (recordType === "text") {
