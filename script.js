@@ -38,7 +38,7 @@ readButton.addEventListener("click", async () => {
     reader.addEventListener("reading", ({ message, serialNumber }) => {
       readLog.textContent += `> Serial Number: ${serialNumber}`;
       readLog.textContent += `> Length: ${message.records.length}`;
-      for (const record of message.records) {
+      for (const record of message) {
         for (let prop in record) {
           readLog.textContent += " " + prop;
         }
