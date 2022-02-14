@@ -29,7 +29,7 @@ readButton.addEventListener("click", async () => {
   try {
     const reader = new NDEFReader();
     await reader.scan();
-    readLog.textContent = "scan started1.5";
+    readLog.textContent = "scan started1.6";
 
     reader.addEventListener("error", () => {
       readLog.textContent += "Error";
