@@ -29,7 +29,7 @@ readButton.addEventListener("click", async () => {
   try {
     const reader = new NDEFReader();
     await reader.scan();
-    readLog.textContent = "scan started1.6";
+    readLog.textContent = "scan started1.7";
 
     reader.addEventListener("error", () => {
       readLog.textContent += "Error";
@@ -38,11 +38,10 @@ readButton.addEventListener("click", async () => {
     reader.addEventListener("reading", ({ message, serialNumber }) => {
       readLog.textContent += `> Serial Number: ${serialNumber}`;
       readLog.textContent += `> Length: ${message.records.length}`;
-      for (const record of message) {
-        for (let prop in record) {
-          readLog.textContent += " " + prop;
-        }
-
+      for (let prop in message) {
+        readLog.textContent += " " + prop;
+      }
+      for (const record of message.records) {
         const { data, encoding, recordType, mediaType } = record;
         readLog.textContent += " ENC:" + encoding;
         readLog.textContent += " MTYPE:" + mediaType;
